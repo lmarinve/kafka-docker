@@ -1,39 +1,45 @@
 # Kafka Docker
 
-Install Docker and Docker Compose
+# Install Docker and Docker Compose
 
-Clone Kafka git project 
+// Clone Kafka git project 
 
-$ git clone https://github.com/atlanticwave-sdx/kafka-docker
+git clone https://github.com/atlanticwave-sdx/kafka-docker
 
-$ cd kafka-docker
+cd kafka-docker
 
 
 // Update KAFKA_ADVERTISED_HOST_NAME inside 'docker-compose.yml',
 
 // For example, set it to 172.17.0.1
 
+vim docker-compose.yml 
+
 // Optional - Scale the cluster by adding more brokers
 
-$ docker-compose scale kafka=3
+docker-compose scale kafka=3
+
+// Start Docker compose
+
+docker-compose up -d
 
 //Check the proceses running:
 
-$ docker-compose ps
+docker-compose ps
 
 // Destroy the cluster when you are done with it
 
-$ docker-compose stop
+docker-compose stop
 
 # Kafka Shell
 
 //Start Kafka shell
 
-$ ./start-kafka-shell.sh <DOCKER_HOST_IP/KAFKA_ADVERTISED_HOST_NAME>
+./start-kafka-shell.sh <DOCKER_HOST_IP/KAFKA_ADVERTISED_HOST_NAME>
 
 # In my case:
 
-$ ./start-kafka-shell.sh 172.17.0.1
+./start-kafka-shell.sh 172.17.0.1
 
 # Create a Topic
 
