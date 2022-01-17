@@ -2,6 +2,8 @@
 
 # Install Docker and Docker Compose
 
+https://docs.docker.com/compose/install/
+
 // Clone Kafka git project 
 
 git clone https://github.com/atlanticwave-sdx/kafka-docker
