@@ -10,10 +10,17 @@ git clone https://github.com/atlanticwave-sdx/kafka-docker
 
 cd kafka-docker
 
+## Environment Variables
 
-// Update KAFKA_ADVERTISED_HOST_NAME inside 'docker-compose.yml',
+| Name                       | Type     | Description                                                    | Example                 |
+| -------------------------- | -------- | -------------------------------------------------------------- | ----------------------- |
+| KRAFT_CONTAINER_HOST_NAME  | string   | Hostname for the running container as the Kafka listener       | kafka                   |
+| KRAFT_CREATE_TOPICS        | []string | Comma separated list of topics to be created post server setup | topic-a,topic-b,topic-c |
+| KRAFT_PARTITIONS_PER_TOPIC | int      | Number of partitions per topic                                 | 3                       |
 
-// For example, set it to 172.17.0.1
+# Create docker image
+
+./dckbuild.sh
 
 vim docker-compose.yml 
 
@@ -21,7 +28,7 @@ vim docker-compose.yml
 
 docker-compose scale kafka=3
 
-// Start Docker compose
+# Start Docker compose
 
 docker-compose up -d
 
@@ -33,40 +40,3 @@ docker-compose ps
 
 docker-compose stop
 
-# Kafka Shell
-
-//Start Kafka shell
-
-./start-kafka-shell.sh <DOCKER_HOST_IP/KAFKA_ADVERTISED_HOST_NAME>
-
-# In my case:
-
-./start-kafka-shell.sh 172.17.0.1
-
-# Create a Topic
-
-> $KAFKA_HOME/bin/kafka-topics.sh --create --topic test \
---partitions 4 --replication-factor 2 \
---bootstrap-server `broker-list.sh`
-
-> $KAFKA_HOME/bin/kafka-topics.sh --describe --topic test \
---bootstrap-server `broker-list.sh`
-
-# Producer
-
-// Initialize the producer and write messages to Kafka’s brokers.
-
-> $KAFKA_HOME/bin/kafka-console-producer.sh --topic=test \
---broker-list=`broker-list.sh`
-
->> Hello World!
-
->> I'm a Producer writing to 'hello-topic'
-
-# Consumer
-
-// Initialize the consumer from another Kafka terminal and it will start reading the messages sent by the producer.
-
-
-> $KAFKA_HOME/bin/kafka-console-consumer.sh --topic=test \
---from-beginning --bootstrap-server `broker-list.sh`

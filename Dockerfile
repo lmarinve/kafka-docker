@@ -27,9 +27,9 @@ RUN apt-get update \
     && javac --version \
     && jlink --version 
     
-RUN wget https://mirrors.ocf.berkeley.edu/apache/kafka/${kafkaversion}/kafka_${scalaversion}-${kafkaversion}.tgz -O kafka.tgz \
+RUN wget https://mirrors.ocf.berkeley.edu/apache/kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz -O kafka.tgz \
     && tar xvzf kafka.tgz \
-    && mv kafka_${scalaversion}-${kafkaversion} kafka
+    && mv kafka_${SCALA_VERSION}-${KAFKA_VERSION} kafka
 
 WORKDIR /opt/kafka
 
