@@ -2,7 +2,8 @@ version: "3.8"
 
 services:
   kafka:
-    image: kafka-kraft:latest
+    image: kafka_image:latest
+    container_name: kafka_container
     restart: always
     ports:
       - "9093:9093"
@@ -40,7 +41,17 @@ services:
       - '3000:3000'
     volumes:
       - grafana_data:/var/lib/grafana
-      
+
+  consumer:
+    container_name: consumer_container
+    image: consumer_image
+    tty: true
+    privileged: true
+    depends_on:
+      - broker
+      - influxdb
+
+
 volumes:
   grafana_data: {}
   influxdb_data: {}
