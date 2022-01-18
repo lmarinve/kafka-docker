@@ -43,4 +43,4 @@ docker-compose stop
 
 ## Infrastructure
 
-
+![infrastructure](https://fiudit-my.sharepoint.com/:i:/g/personal/lmarinve_fiu_edu/ES61HUl2AuJCrw6naiiItf0BE14I91HoKAdX67MphlnbAA?e=X7MKTN)
