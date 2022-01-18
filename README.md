@@ -40,3 +40,8 @@ docker-compose ps
 
 docker-compose stop
 
+
+## Infrastructure
+
+![infrastructure](https://qbee.io/docs/images/docker-nodered-influx-grafana.svg)
+

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -f Dockerfile -t kafka .
+docker build -f Dockerfile -t kafka-kraft .

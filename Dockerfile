@@ -38,4 +38,4 @@ COPY ./*.sh .
 
 EXPOSE 9092 9093
 
-ENTRYPOINT ["./docker-entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
