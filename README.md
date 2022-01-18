@@ -40,4 +40,4 @@ docker-compose ps
 
 docker-compose stop
 
-![Infraestructure](https://raw.githubusercontent.com/lmarinve/kafka-docker/master/.github/kafka-kraft.jpeg)
+![Infraestructure](https://github.com/lmarinve/kafka-docker/blob/master/kafka-kraft.jpeg)
