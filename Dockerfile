@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:bullseye
 
 # LABEL about the custom image
 LABEL maintainer="lmarinve@fiu.edu"
@@ -13,21 +13,14 @@ WORKDIR /opt
 # Update Debian
 RUN apt-get update && apt-get -y upgrade
 
-RUN apt-get install gcc musl-dev linux-headers librdkafka-dev build-essential \
-zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev \
-libreadline-dev libffi-dev curl libbz2-dev wget ca-certificates
+RUN apt-get install -y gcc musl-dev librdkafka-dev build-essential zlib1g-dev \
+libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev \
+libffi-dev curl libbz2-dev wget ca-certificates netcat tar python3 python3-pip
 
 RUN curl -L -o openjdk.tar.gz \
-        https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz \
-    && mkdir jdk \
-    && tar zxf openjdk.tar.gz -C jdk --strip-components=1 \
-    && rm -rf openjdk.tar.gz \
-    && ln -sf /opt/jdk/bin/* /usr/local/bin/ \
-
-RUN wget https://www.python.org/ftp/python/3.9.1/Python-3.9.1.tgz \
-    && tar -xf Python-3.9.1.tgz \
-    && cd Python-3.9.1 \
-    && ./configure --enable-optimizations \
-    && make -j 2 \
-    && make altinstall \
-    && rm -rf /var/lib/apt/lists/*
+https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz
+RUN mkdir jdk
+RUN tar zxf openjdk.tar.gz -C jdk --strip-components=1
+RUN rm -rf openjdk.tar.gz
+RUN ln -sf /opt/jdk/bin/* /usr/local/bin/
+RUN rm -rf /var/lib/apt/lists/*
